@@ -15,11 +15,20 @@ namespace AluraTestDrive.View
 			InitializeComponent();
 		}
 
-        private void listview_ItemTapped(object sender, ItemTappedEventArgs e)
+        protected override void OnAppearing()
         {
-            Veiculo veiculo = (Veiculo)e.Item;
-            Navigation.PushAsync(new DetalheView(veiculo));
+            //Rebendo a mensagem do ViewModel e Fazendo a Navegação
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado", (msg) => {
+                Navigation.PushAsync(new DetalheView(msg));
+            });
 
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
         }
 
     }
