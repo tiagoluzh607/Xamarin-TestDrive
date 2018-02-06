@@ -44,5 +44,23 @@ namespace AluraTestDrive.View
             DisplayAlert("Agendamento Concluído", conteudo, "OK");
         }
 
-	}
+        /* Comands */
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            MessagingCenter.Subscribe<string>(this, "DisplayAlert", (msg) => {
+                DisplayAlert("Agendamento Concluído", msg, "OK");
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<string>(this, "DisplayAlert");
+        }
+
+    }
 }
