@@ -25,25 +25,6 @@ namespace AluraTestDrive.View
 
         }
 
-        private void Button_Agendar_Clicked(object sender, EventArgs e)
-        {
-            string conteudo = string.Format(
-            @"Veiculo: {0} 
-            Nome: {1}
-            Fone: {2}
-            E-mail: {3}
-            Data Agendamento: {4}
-            Hora Agendamento: {5}",
-            ViewModel.agendamento.Veiculo.Nome , 
-            ViewModel.agendamento.Nome, 
-            ViewModel.agendamento.Fone, 
-            ViewModel.agendamento.Email, 
-            ViewModel.agendamento.DataAgendamento.ToString("dd/MM/yyyy"), 
-            ViewModel.agendamento.HoraAgendamento);
-
-            DisplayAlert("Agendamento Concluído", conteudo, "OK");
-        }
-
         /* Comands */
 
         protected override void OnAppearing()

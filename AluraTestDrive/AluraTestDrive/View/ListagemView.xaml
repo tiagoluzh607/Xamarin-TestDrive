@@ -6,11 +6,7 @@
              
              xmlns:vm ="clr-namespace:AluraTestDrive.ViewModels"
              Title="Test Drive">
-    
-    <ContentPage.BindingContext>
-        <vm:ListagemViewModel></vm:ListagemViewModel>
-    </ContentPage.BindingContext>
-    
+
     <ListView x:Name="listview" ItemsSource="{Binding Veiculos}" Margin="20" SelectedItem="{Binding VeiculoSelecionado}">
         <ListView.ItemTemplate>
             <DataTemplate>
