@@ -24,12 +24,23 @@ namespace AluraTestDrive.View
             this.BindingContext = new DetalheViewModel(veiculo); // para poder acessar as propriedades no view
 		}
 
-
-        private void buttonProximo_Clicked(object send, EventArgs e)
+        /* 
+        * Escrevendo Ações das Mensagens 
+        */
+        
+        protected override void OnAppearing()
         {
-            Navigation.PushAsync(new AgendamentoView(this.veiculo));
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (msg) => {
+                Navigation.PushAsync(new AgendamentoView(msg));
+            });
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "Proximo");
+        }
 
 
     }

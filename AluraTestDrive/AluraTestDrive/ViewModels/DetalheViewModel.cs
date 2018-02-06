@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AluraTestDrive.ViewModels
 {
@@ -63,10 +65,18 @@ namespace AluraTestDrive.ViewModels
             }
         }
 
+        //Comands
+
+        public ICommand ProximoCommand { get; set; }
+        public void proximaPagina()
+        {
+            MessagingCenter.Send(veiculo, "Proximo");
+        }
 
         public DetalheViewModel(Veiculo veiculo)
         {
             this.veiculo = veiculo;
+            ProximoCommand = new Command(proximaPagina);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
