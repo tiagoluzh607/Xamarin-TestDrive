@@ -50,7 +50,8 @@ namespace AluraTestDrive.ViewModels
 
         public async Task GetVeiculosAsync()
         {
-            Aguarde = true;
+            Aguarde = true; //Componente aguardar rodando
+
             HttpClient cliente = new HttpClient();
             var resultado = await cliente.GetStringAsync(URL_GET_VEICULOS);
 
@@ -65,7 +66,7 @@ namespace AluraTestDrive.ViewModels
                 });
             }
 
-            Aguarde = false;
+            Aguarde = false; // Desligando componente aguardar
         }
 
     }
