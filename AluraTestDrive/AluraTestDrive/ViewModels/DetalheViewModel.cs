@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace AluraTestDrive.ViewModels
 {
-    public class DetalheViewModel : INotifyPropertyChanged
+    public class DetalheViewModel : BaseViewModel
     {
         public Veiculo veiculo { get; set; }
 
@@ -79,13 +79,6 @@ namespace AluraTestDrive.ViewModels
             ProximoCommand = new Command(proximaPagina);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        //Simplesmente usa o nome do metódoto para chamar o sistema de notificação que foi recebido pela interface
-        //Ao ser chamado ele avisa o xamarin que um elemento da tela precisa ser atualizado
-        public void OnPropertyChanged([CallerMemberName]string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 }
