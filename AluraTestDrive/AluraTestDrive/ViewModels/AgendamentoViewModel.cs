@@ -49,7 +49,6 @@ namespace AluraTestDrive.ViewModels
             MessagingCenter.Send(mensagem, "DisplayAlert");
         }
 
-
         public AgendamentoViewModel(Veiculo veiculo)
         {
             agendamento = new Agendamento();
@@ -64,5 +63,6 @@ namespace AluraTestDrive.ViewModels
         }
 
         public TimeSpan HoraAgendamento { get { return agendamento.HoraAgendamento; } set { agendamento.HoraAgendamento = value; } }
+
     }
 }

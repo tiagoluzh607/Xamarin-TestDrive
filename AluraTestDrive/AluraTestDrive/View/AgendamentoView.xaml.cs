@@ -31,8 +31,15 @@ namespace AluraTestDrive.View
         {
             base.OnAppearing();
 
-            MessagingCenter.Subscribe<string>(this, "DisplayAlert", (msg) => {
-                DisplayAlert("Agendamento Concluído", msg, "OK");
+            MessagingCenter.Subscribe<string>(this, "DisplayAlert", async (msg) => {
+
+                bool confirma = await DisplayAlert("Confirmar Agendamento?", "Deseja mesmo Confirmar o agendamento?", "Sim", "Não");
+
+                if (confirma)
+                {
+                    DisplayAlert("Agendamento Concluído", msg, "OK");
+                }
+
             });
         }
 
