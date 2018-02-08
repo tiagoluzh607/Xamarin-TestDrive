@@ -1,4 +1,5 @@
-﻿using AluraTestDrive.View;
+﻿using AluraTestDrive.Models;
+using AluraTestDrive.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,15 @@ namespace AluraTestDrive
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new ListagemView());
+			MainPage = new LoginView();
 		}
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin", (usuario) => {
+
+                MainPage = new NavigationPage(new ListagemView());
+            });
 		}
 
 		protected override void OnSleep ()
