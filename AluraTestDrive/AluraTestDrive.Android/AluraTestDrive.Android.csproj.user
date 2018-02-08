@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>Samsung SM-G7102T</SelectedDevice>
     <DefaultDevice>Android_Accelerated_x86_Nougat</DefaultDevice>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>

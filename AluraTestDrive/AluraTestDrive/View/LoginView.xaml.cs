@@ -1,4 +1,6 @@
-﻿using AluraTestDrive.Models;
+﻿using AluraTestDrive.Exceptions;
+using AluraTestDrive.Models;
+using AluraTestDrive.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +18,22 @@ namespace AluraTestDrive.View
 		public LoginView ()
 		{
 			InitializeComponent ();
+            this.BindingContext = new LoginViewModel();
 		}
 
-        private void Entrar_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            MessagingCenter.Send<Usuario>(new Usuario(), "SucessoLogin");
+            base.OnAppearing();
+            MessagingCenter.Subscribe<LoginException>(this, "FalhaLogin", async (exc) => {
+
+                await DisplayAlert("Login", exc.Message, "OK");
+            });
         }
-	}
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<LoginException>(this, "FalhaLogin");
+        }
+    }
 }
