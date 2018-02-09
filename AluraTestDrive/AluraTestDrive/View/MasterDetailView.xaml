@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:AluraTestDrive.View"
+             x:Class="AluraTestDrive.View.MasterDetailView">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Perfil">
+            <Label Text="Este é o Perfil do Usuario"></Label>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <view:ListagemView> </view:ListagemView>
+    </MasterDetailPage.Detail>
+    
+    
+</MasterDetailPage>

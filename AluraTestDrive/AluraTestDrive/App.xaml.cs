@@ -22,7 +22,8 @@ namespace AluraTestDrive
 		{
             MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin", (usuario) => {
 
-                MainPage = new NavigationPage(new ListagemView());
+                //MainPage = new NavigationPage(new ListagemView());
+                MainPage = new MasterDetailView();
             });
 		}
 
