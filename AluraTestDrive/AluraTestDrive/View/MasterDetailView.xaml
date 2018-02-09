@@ -5,12 +5,10 @@
              x:Class="AluraTestDrive.View.MasterDetailView">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="Perfil">
-            <Label Text="Este é o Perfil do Usuario"></Label>
-        </ContentPage>
+        <!-- Master View / Code Behind -->
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <view:ListagemView> </view:ListagemView>
+        <!-- Listagem View / Code Behind-->
     </MasterDetailPage.Detail>
     
     
