@@ -4,9 +4,17 @@
              x:Class="AluraTestDrive.View.MasterView"
              Title="Perfil">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="João da Silva!" />
-            <Label Text="joao@alura.com.br" />
-        </StackLayout>
+        <Frame OutlineColor="Silver" 
+               Margin="15"
+               VerticalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="{Binding Nome}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill"></BoxView>
+                <Label Text="{Binding Email}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill"></BoxView>
+                
+                <Button Text="Perfil"></Button>
+            </StackLayout>
+        </Frame>
     </ContentPage.Content>
 </ContentPage>
