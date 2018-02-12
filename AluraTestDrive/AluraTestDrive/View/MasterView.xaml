@@ -22,7 +22,25 @@
             </ContentPage.Content>
         </ContentPage>
         <ContentPage Title="Editar">
-            
+            <ContentPage.Content>
+                <Frame OutlineColor="Silver" 
+               Margin="15"
+               VerticalOptions="CenterAndExpand">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <TableView>
+                            <TableRoot>
+                                <TableSection Title="Dados Pessoais">
+                                    <EntryCell Placeholder="Nome" Text="{Binding Nome}"></EntryCell>
+                                    <EntryCell Placeholder="Data de Nascimento" Text="{Binding DataNascimento}"></EntryCell>
+                                    <EntryCell Placeholder="Telefone" Text="{Binding Telefone}"></EntryCell>
+                                    <EntryCell Placeholder="E-mail" Text="{Binding Email}"></EntryCell>
+                                </TableSection>
+                            </TableRoot>
+                        </TableView>
+                        <Button Text="Salvar"></Button>
+                    </StackLayout>
+                </Frame>
+            </ContentPage.Content>
         </ContentPage>
         
         

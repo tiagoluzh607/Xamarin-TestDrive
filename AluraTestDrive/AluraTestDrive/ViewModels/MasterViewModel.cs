@@ -17,6 +17,19 @@ namespace AluraTestDrive.ViewModels
             set { usuario.nome = value; }
         }
 
+        public string DataNascimento
+        {
+            get { return this.usuario.dataNascimento; }
+            set { this.usuario.dataNascimento = value; }
+        }
+
+        public string Telefone
+        {
+            get { return this.usuario.telefone; }
+            set { this.usuario.telefone = value; }
+        }
+
+
         public string Email
         {
             get { return usuario.email; }
@@ -31,10 +44,17 @@ namespace AluraTestDrive.ViewModels
             MessagingCenter.Send<Usuario>(usuario, "NavegarEditarPerfil");
         }
 
+        public ICommand SalvarPerfilCommand { get; private set; }
+        public void SalvarPerfil()
+        {
+
+        }
+
         public MasterViewModel(Usuario usuario)
         {
             this.usuario = usuario;
             EditarPerfilCommand = new Command(EditarPerfil);
+            SalvarPerfilCommand = new ICommand(SalvarPerfil);
         }
 
     }
