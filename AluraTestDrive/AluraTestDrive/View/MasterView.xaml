@@ -2,8 +2,17 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AluraTestDrive.View.MasterView"
+            
+            xmlns:converters="clr-namespace:AluraTestDrive.Converters"
              Title="Perfil">
 
+    <!-- Para usar os Conversores -->
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <converters:NegativoConverter x:Key="negativo"></converters:NegativoConverter>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    
     <TabbedPage.Children>
         <ContentPage Title="Usuario">
             <ContentPage.Content>
@@ -38,7 +47,7 @@
                             </TableRoot>
                         </TableView>
                         <Button Text="Salvar" Command="{Binding SalvarCommand}" IsVisible="{Binding Editando}"></Button>
-                        <Button Text="Editar" Command="{Binding EditarCommand}"></Button>
+                        <Button Text="Editar" Command="{Binding EditarCommand}" IsVisible="{Binding Editando, Converter={StaticResource Key=negativo}}"></Button>
                     </StackLayout>
                 </Frame>
             </ContentPage.Content>
