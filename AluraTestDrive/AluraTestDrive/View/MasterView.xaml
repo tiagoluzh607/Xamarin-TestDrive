@@ -30,14 +30,15 @@
                         <TableView>
                             <TableRoot>
                                 <TableSection Title="Dados Pessoais">
-                                    <EntryCell Placeholder="Nome" Text="{Binding Nome}"></EntryCell>
-                                    <EntryCell Placeholder="Data de Nascimento" Text="{Binding DataNascimento}"></EntryCell>
-                                    <EntryCell Placeholder="Telefone" Text="{Binding Telefone}"></EntryCell>
-                                    <EntryCell Placeholder="E-mail" Text="{Binding Email}"></EntryCell>
+                                    <EntryCell Placeholder="Nome" Text="{Binding Nome}" IsEnabled="{Binding Editando}"></EntryCell>
+                                    <EntryCell Placeholder="Data de Nascimento" Text="{Binding DataNascimento}" IsEnabled="{Binding Editando}"></EntryCell>
+                                    <EntryCell Placeholder="Telefone" Text="{Binding Telefone}" IsEnabled="{Binding Editando}"></EntryCell>
+                                    <EntryCell Placeholder="E-mail" Text="{Binding Email}" IsEnabled="{Binding Editando}"></EntryCell>
                                 </TableSection>
                             </TableRoot>
                         </TableView>
-                        <Button Text="Salvar"></Button>
+                        <Button Text="Salvar" Command="{Binding SalvarCommand}" IsVisible="{Binding Editando}"></Button>
+                        <Button Text="Editar" Command="{Binding EditarCommand}"></Button>
                     </StackLayout>
                 </Frame>
             </ContentPage.Content>

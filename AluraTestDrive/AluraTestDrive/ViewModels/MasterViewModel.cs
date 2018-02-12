@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace AluraTestDrive.ViewModels
 {
-     public class MasterViewModel
+     public class MasterViewModel : BaseViewModel
     {
         private readonly Usuario usuario;
 
@@ -36,6 +36,17 @@ namespace AluraTestDrive.ViewModels
             set { usuario.email = value; }
         }
 
+        private bool editando = false;
+        public bool Editando
+        {
+            get { return editando; }
+            private set {
+                editando = value;
+                OnPropertyChanged(nameof(Editando));
+            }
+        }
+
+
         //Commands
 
         public ICommand EditarPerfilCommand { get; private set; }
@@ -44,17 +55,29 @@ namespace AluraTestDrive.ViewModels
             MessagingCenter.Send<Usuario>(usuario, "NavegarEditarPerfil");
         }
 
-        public ICommand SalvarPerfilCommand { get; private set; }
-        public void SalvarPerfil()
+        public ICommand SalvarCommand { get; private set; }
+        public void Salvar()
         {
+            Editando = false;
+            MessagingCenter.Send<Usuario>(usuario, "SucessoSalvarUsuario");
+        }
+        public bool SalvarCondicao()
+        {
+            return true;
+        }
 
+        public ICommand EditarCommand { get; private set; }
+        public void Editar()
+        {
+            this.Editando = true;
         }
 
         public MasterViewModel(Usuario usuario)
         {
             this.usuario = usuario;
             EditarPerfilCommand = new Command(EditarPerfil);
-            SalvarPerfilCommand = new ICommand(SalvarPerfil);
+            SalvarCommand = new Command(Salvar,SalvarCondicao);
+            EditarCommand = new Command(Editar);
         }
 
     }

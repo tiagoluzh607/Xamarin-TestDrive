@@ -26,16 +26,33 @@ namespace AluraTestDrive.View
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Usuario>(this, "NavegarEditarPerfil", (usuario) => {
-                //o Tabet Page tem a propriedade pagina atual(CurrentPage) - e tambem guarda as paginas filhas com indices começando em 0, podendo ser acessadas(thi.Children[indice])
-                this.CurrentPage = this.Children[1];
-            });
+            AssinarMensagens();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            CancelarMensagens();
+        }
+
+        private void AssinarMensagens()
+        {
+            MessagingCenter.Subscribe<Usuario>(this, "NavegarEditarPerfil", (usuario) =>
+            {
+                //o Tabet Page tem a propriedade pagina atual(CurrentPage) - e tambem guarda as paginas filhas com indices começando em 0, podendo ser acessadas(thi.Children[indice])
+                this.CurrentPage = this.Children[1];
+            });
+
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoSalvarUsuario", (usuario) =>
+            {
+                this.CurrentPage = this.Children[0];
+            });
+        }
+
+        private void CancelarMensagens()
+        {
             MessagingCenter.Unsubscribe<Usuario>(this, "NavegarEditarPerfil");
+            MessagingCenter.Unsubscribe<Usuario>(this, "SucessoSalvarUsuario");
         }
     }
 }
