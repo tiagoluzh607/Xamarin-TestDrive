@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AluraTestDrive.ViewModels
 {
@@ -21,9 +23,18 @@ namespace AluraTestDrive.ViewModels
             set { usuario.email = value; }
         }
 
+        //Commands
+
+        public ICommand EditarPerfilCommand { get; private set; }
+        public void EditarPerfil()
+        {
+            MessagingCenter.Send<Usuario>(usuario, "NavegarEditarPerfil");
+        }
+
         public MasterViewModel(Usuario usuario)
         {
             this.usuario = usuario;
+            EditarPerfilCommand = new Command(EditarPerfil);
         }
 
     }
