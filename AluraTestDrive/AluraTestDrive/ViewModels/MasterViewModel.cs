@@ -2,6 +2,7 @@
 using AluraTestDrive.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -10,6 +11,7 @@ namespace AluraTestDrive.ViewModels
 {
      public class MasterViewModel : BaseViewModel
     {
+        //Propriedades
         private readonly Usuario usuario;
 
         public string Nome
@@ -52,7 +54,10 @@ namespace AluraTestDrive.ViewModels
         public ImageSource FotoPerfil
         {
             get { return imageSource; }
-            private set { imageSource = value; }
+            private set {
+                imageSource = value;
+                OnPropertyChanged();
+            }
         }
 
 
@@ -87,6 +92,16 @@ namespace AluraTestDrive.ViewModels
             DependencyService.Get<ICamera>().TirarFoto();
         }
 
+        //Messagens
+
+        private void Messagens()
+        {
+            MessagingCenter.Subscribe<byte[]>(this, "FotoTirada", (bytes) => {
+                FotoPerfil = ImageSource.FromStream(()=> new MemoryStream(bytes)); // transforma o array de bytes em imagesource
+            });
+        }
+
+
         public MasterViewModel(Usuario usuario)
         {
             this.usuario = usuario;
@@ -94,6 +109,8 @@ namespace AluraTestDrive.ViewModels
             SalvarCommand = new Command(Salvar,SalvarCondicao);
             EditarCommand = new Command(Editar);
             TirarFotoCommand = new Command(TirarFoto);
+
+            Messagens();
         }
 
     }
