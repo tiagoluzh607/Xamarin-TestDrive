@@ -40,6 +40,7 @@
                VerticalOptions="CenterAndExpand">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <Image Source="{Binding FotoPerfil}"></Image>
+                        <Button Text="Tirar Foto" Command="{Binding TirarFotoCommand}"></Button>
                         <TableView>
                             <TableRoot>
                                 <TableSection Title="Dados Pessoais">

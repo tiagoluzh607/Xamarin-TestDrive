@@ -1,4 +1,5 @@
-﻿using AluraTestDrive.Models;
+﻿using AluraTestDrive.Media;
+using AluraTestDrive.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -80,12 +81,19 @@ namespace AluraTestDrive.ViewModels
             this.Editando = true;
         }
 
+        public ICommand TirarFotoCommand { get; private set; }
+        public void TirarFoto()
+        {
+            DependencyService.Get<ICamera>().TirarFoto();
+        }
+
         public MasterViewModel(Usuario usuario)
         {
             this.usuario = usuario;
             EditarPerfilCommand = new Command(EditarPerfil);
             SalvarCommand = new Command(Salvar,SalvarCondicao);
             EditarCommand = new Command(Editar);
+            TirarFotoCommand = new Command(TirarFoto);
         }
 
     }
