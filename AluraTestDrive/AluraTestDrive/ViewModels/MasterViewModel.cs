@@ -46,6 +46,14 @@ namespace AluraTestDrive.ViewModels
             }
         }
 
+        private ImageSource imageSource = "perfil.png";
+
+        public ImageSource FotoPerfil
+        {
+            get { return imageSource; }
+            private set { imageSource = value; }
+        }
+
 
         //Commands
 
