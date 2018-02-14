@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,8 @@ namespace AluraTestDrive.Models
 {
     public class AgendamentoBD
     {
-        
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Fone { get; set; }
         public string Email { get; set; }
