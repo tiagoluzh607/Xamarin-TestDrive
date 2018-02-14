@@ -31,7 +31,14 @@ namespace AluraTestDrive.View
         {
             base.OnAppearing();
 
-            MessagingCenter.Subscribe<AgendamentoViewModel>(this, "Agendar", async (msg) => {
+            AssinarMensagens();
+
+        }
+
+        private void AssinarMensagens()
+        {
+            MessagingCenter.Subscribe<AgendamentoViewModel>(this, "Agendar", async (msg) =>
+            {
 
                 bool confirma = await DisplayAlert("Confirmar Agendamento?", "Deseja mesmo Confirmar o agendamento?", "Sim", "Não");
 
@@ -41,24 +48,31 @@ namespace AluraTestDrive.View
                 }
             });
 
-            MessagingCenter.Subscribe<Agendamento>(this, "SucessoAgendamento", (msg) => {
-                DisplayAlert("Agendamento", "Agendamento salvo com sucesso!", "Ok");
+            MessagingCenter.Subscribe<Agendamento>(this, "SucessoAgendamento", async (msg) =>
+            {
+                await DisplayAlert("Agendamento", "Agendamento salvo com sucesso!", "Ok");
+                await Navigation.PopToRootAsync(); // Comando que volta a navegacao até a raiz
             });
 
-            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaAgendamento", (msg) => {
-                DisplayAlert("Agendamento", "Que Constrangedor! Erro ao Agendar o Teste Drive, confira os dados e teste mais tarde!\n\n\n Erro: "+msg.Message, "Ok");
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaAgendamento", async (msg) =>
+            {
+                await DisplayAlert("Agendamento", "Que Constrangedor! Erro ao Agendar o Teste Drive, confira os dados e teste mais tarde!\n\n\n Erro: " + msg.Message, "Ok");
+                await Navigation.PopToRootAsync();
             });
-
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
 
+            CancelarMensagens();
+        }
+
+        private void CancelarMensagens()
+        {
             MessagingCenter.Unsubscribe<object>(this, "DisplayAlert");
             MessagingCenter.Unsubscribe<Agendamento>(this, "SucessoAgendamento");
             MessagingCenter.Unsubscribe<Agendamento>(this, "FalhaAgendamento");
         }
-
     }
 }
