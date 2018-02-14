@@ -1,4 +1,5 @@
-﻿using AluraTestDrive.Models;
+﻿using AluraTestDrive.Data;
+using AluraTestDrive.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -109,6 +110,12 @@ namespace AluraTestDrive.ViewModels
             var conteudo = new StringContent(json, Encoding.UTF8, "application/json");
             var resposta = await cliente.PostAsync(URL_POST_AGENDAMENTO, conteudo);
 
+            //SQLite salvar localmente
+
+            SalvarAgendamentoDB();
+
+
+            //Envia para o servidor
             if (resposta.IsSuccessStatusCode)
             {
                 MessagingCenter.Send<Agendamento>(this.agendamento, "SucessoAgendamento");
@@ -119,5 +126,13 @@ namespace AluraTestDrive.ViewModels
             }
         }
 
+        private void SalvarAgendamentoDB()
+        {
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                AgendamentoDAO dao = new AgendamentoDAO(conexao);
+                dao.Salvar(this.agendamento);
+            }
+        }
     }
 }

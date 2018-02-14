@@ -19,5 +19,19 @@ namespace AluraTestDrive.Models
             set { dataAgendamento = value; }
         }
         public TimeSpan HoraAgendamento { get; set; }
+
+
+
+        public AgendamentoBD GetAgendamentoDB()
+        {
+            AgendamentoBD agendamentoBD = new AgendamentoBD(Nome, Fone, Email, Veiculo.Nome, Veiculo.Preco, DataAgendamento, HoraAgendamento);
+            return agendamentoBD;
+        }
+
+
+
+
     }
+
+
 }
