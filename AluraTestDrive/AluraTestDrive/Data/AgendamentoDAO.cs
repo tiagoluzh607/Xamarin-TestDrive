@@ -41,7 +41,18 @@ namespace AluraTestDrive.Data
         public void Salvar(Agendamento agendamento) {
 
             AgendamentoBD agendamentoBD = agendamento.GetAgendamentoDB();
-            conexao.Insert(agendamentoBD);
+
+            //Se o agendamento já existir no banco atualiza
+            if(conexao.Find<AgendamentoBD>(agendamentoBD.Id) == null)
+            {
+                conexao.Insert(agendamentoBD);
+            }
+            else
+            {
+                conexao.Update(agendamentoBD);
+            }
+
+            
         }
     }
 }

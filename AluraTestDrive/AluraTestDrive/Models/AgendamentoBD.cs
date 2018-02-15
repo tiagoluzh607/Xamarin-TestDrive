@@ -30,9 +30,10 @@ namespace AluraTestDrive.Models
             this.Confirmado = false;
         }
 
-        public AgendamentoBD(string nome, string fone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento)
+        public AgendamentoBD(int id, string nome, string fone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento)
             : this()
         {
+            this.Id = id;
             this.Nome = nome;
             this.Fone = fone;
             this.Email = email;
@@ -45,6 +46,7 @@ namespace AluraTestDrive.Models
         public Agendamento GetAgendamento()
         {
             Agendamento agendamento = new Agendamento(
+                this.Id,
                 this.Nome,
                 this.Fone,
                 this.Email,

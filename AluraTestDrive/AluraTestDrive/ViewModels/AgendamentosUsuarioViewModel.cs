@@ -29,13 +29,21 @@ namespace AluraTestDrive.ViewModels
         {
             get { return agendamentoSelecionado; }
             set {
-                MessagingCenter.Send<Agendamento>(agendamentoSelecionado, "AgendamentoSelecionado");
-                agendamentoSelecionado = value;
+                if (value != null)
+                {
+                    agendamentoSelecionado = value;
+                    MessagingCenter.Send<Agendamento>(agendamentoSelecionado, "AgendamentoSelecionado");
+                }
             }
         }
 
 
         public AgendamentosUsuarioViewModel()
+        {
+            AtualizarLista();
+        }
+
+        public void AtualizarLista()
         {
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
@@ -46,7 +54,8 @@ namespace AluraTestDrive.ViewModels
                             .OrderBy(l => l.DataAgendamento)
                             .ThenBy(l => l.HoraAgendamento);
 
-                foreach(var itemDB in query)
+                Lista.Clear();
+                foreach (var itemDB in query)
                 {
                     this.Lista.Add(itemDB);
                 }

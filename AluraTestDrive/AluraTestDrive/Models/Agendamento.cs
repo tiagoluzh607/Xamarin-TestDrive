@@ -6,6 +6,7 @@ namespace AluraTestDrive.Models
 {
     public class Agendamento
     {
+        public int Id { get; set; }
         public Veiculo Veiculo { get; set; }
         public string Nome { get; set; }
         public string Fone { get; set; }
@@ -31,7 +32,7 @@ namespace AluraTestDrive.Models
 
         public AgendamentoBD GetAgendamentoDB()
         {
-            AgendamentoBD agendamentoBD = new AgendamentoBD(Nome, Fone, Email, Veiculo.Nome, Veiculo.Preco, DataAgendamento, HoraAgendamento);
+            AgendamentoBD agendamentoBD = new AgendamentoBD(Id, Nome, Fone, Email, Veiculo.Nome, Veiculo.Preco, DataAgendamento, HoraAgendamento);
             agendamentoBD.Confirmado = this.Confirmado;
             return agendamentoBD;
         }
@@ -53,9 +54,10 @@ namespace AluraTestDrive.Models
             this.Veiculo.Preco = preco;
         }
 
-        public Agendamento(string nome, string fone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento)
+        public Agendamento(int id, string nome, string fone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento)
             : this(nome,fone,email,modelo,preco)
         {
+            this.Id = id;
             this.DataAgendamento = dataAgendamento;
             this.HoraAgendamento = horaAgendamento;
         }
