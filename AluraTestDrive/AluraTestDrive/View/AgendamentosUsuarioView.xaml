@@ -2,17 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AluraTestDrive.View.AgendamentosUsuarioView"
+             
+             xmlns:converters="clr-namespace:AluraTestDrive.Converters"
              Title="Meus Agendamentos">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:AgendamentoConfirmadoConverter x:Key="confirmadoConverter"></converters:AgendamentoConfirmadoConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ListView ItemsSource="{Binding Lista}" Margin="25">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <ViewCell.View>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding DataFormatada}" FontSize="18" VerticalOptions="Center"></Label>
-                            <Label Text=" - " VerticalOptions="Center"></Label>
-                            <Label Text="{Binding Veiculo.Nome}" FontAttributes="Bold" VerticalOptions="Center"></Label>
-                            <Label Text="{Binding Confirmado}"></Label>
+                            
+                            <Label Text="{Binding DataFormatada}" 
+                                   FontSize="18" 
+                                   VerticalOptions="Center"
+                                   TextColor="{Binding Confirmado, Converter={StaticResource Key=confirmadoConverter}}"></Label>
+                            
+                            <Label Text=" - " 
+                                   VerticalOptions="Center"
+                                   TextColor="{Binding Confirmado, Converter={StaticResource Key=confirmadoConverter}}"></Label>
+                            
+                            <Label Text="{Binding Veiculo.Nome}" 
+                                   FontAttributes="Bold" 
+                                   VerticalOptions="Center"
+                                   TextColor="{Binding Confirmado, Converter={StaticResource Key=confirmadoConverter}}"></Label>
+                            
+                            
                         </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
