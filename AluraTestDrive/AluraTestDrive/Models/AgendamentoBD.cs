@@ -24,7 +24,13 @@ namespace AluraTestDrive.Models
         }
         public TimeSpan HoraAgendamento { get; set; }
 
-        public AgendamentoBD(string nome, string fone, string email, string modelo, decimal preco ,DateTime dataAgendamento, TimeSpan horaAgendamento)
+        public AgendamentoBD()
+        {
+
+        }
+
+        public AgendamentoBD(string nome, string fone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento)
+            : this()
         {
             this.Nome = nome;
             this.Fone = fone;
@@ -33,6 +39,21 @@ namespace AluraTestDrive.Models
             this.Preco = preco;
             this.DataAgendamento = dataAgendamento;
             this.HoraAgendamento = horaAgendamento;
+        }
+
+        public Agendamento GetAgendamento()
+        {
+            Agendamento agendamento = new Agendamento(
+                this.Nome,
+                this.Fone,
+                this.Email,
+                this.Modelo,
+                this.Preco,
+                this.DataAgendamento,
+                this.HoraAgendamento
+            );
+
+            return agendamento;
         }
     }
 }
