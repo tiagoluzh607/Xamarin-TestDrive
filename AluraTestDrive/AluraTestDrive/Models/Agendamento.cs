@@ -10,7 +10,7 @@ namespace AluraTestDrive.Models
         public string Nome { get; set; }
         public string Fone { get; set; }
         public string Email { get; set; }
-
+        public bool Confirmado { get; set; }
 
         private DateTime dataAgendamento = DateTime.Today;
         public DateTime DataAgendamento
@@ -32,6 +32,7 @@ namespace AluraTestDrive.Models
         public AgendamentoBD GetAgendamentoDB()
         {
             AgendamentoBD agendamentoBD = new AgendamentoBD(Nome, Fone, Email, Veiculo.Nome, Veiculo.Preco, DataAgendamento, HoraAgendamento);
+            agendamentoBD.Confirmado = this.Confirmado;
             return agendamentoBD;
         }
 

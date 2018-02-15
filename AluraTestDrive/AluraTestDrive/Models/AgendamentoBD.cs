@@ -12,6 +12,7 @@ namespace AluraTestDrive.Models
         public string Nome { get; set; }
         public string Fone { get; set; }
         public string Email { get; set; }
+        public bool Confirmado { get; set; }
         public string Modelo { get; set; }
         public decimal Preco { get; set; }
 
@@ -26,7 +27,7 @@ namespace AluraTestDrive.Models
 
         public AgendamentoBD()
         {
-
+            this.Confirmado = false;
         }
 
         public AgendamentoBD(string nome, string fone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento)
@@ -52,6 +53,8 @@ namespace AluraTestDrive.Models
                 this.DataAgendamento,
                 this.HoraAgendamento
             );
+
+            agendamento.Confirmado = this.Confirmado;
 
             return agendamento;
         }

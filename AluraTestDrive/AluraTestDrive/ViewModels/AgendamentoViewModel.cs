@@ -110,13 +110,17 @@ namespace AluraTestDrive.ViewModels
             var conteudo = new StringContent(json, Encoding.UTF8, "application/json");
             var resposta = await cliente.PostAsync(URL_POST_AGENDAMENTO, conteudo);
 
+            //verifica se foi enviado corretamente ao servidor
+            this.agendamento.Confirmado = resposta.IsSuccessStatusCode;
+
+
             //SQLite salvar localmente
 
             SalvarAgendamentoDB();
 
 
             //Envia para o servidor
-            if (resposta.IsSuccessStatusCode)
+            if (this.agendamento.Confirmado)
             {
                 MessagingCenter.Send<Agendamento>(this.agendamento, "SucessoAgendamento");
             }
