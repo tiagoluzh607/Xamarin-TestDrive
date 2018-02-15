@@ -23,6 +23,17 @@ namespace AluraTestDrive.ViewModels
             }
         }
 
+        private Agendamento agendamentoSelecionado;
+
+        public Agendamento AgendamentoSelecionado
+        {
+            get { return agendamentoSelecionado; }
+            set {
+                MessagingCenter.Send<Agendamento>(agendamentoSelecionado, "AgendamentoSelecionado");
+                agendamentoSelecionado = value;
+            }
+        }
+
 
         public AgendamentosUsuarioViewModel()
         {
