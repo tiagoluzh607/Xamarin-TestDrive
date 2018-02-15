@@ -27,16 +27,37 @@ namespace AluraTestDrive.View
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Usuario>(this, "MeusAgendamentos", (usuario) => {
-                this.Detail = new NavigationPage(new AgendamentosUsuarioView());
-                this.IsPresented = false;
-            });
-        }
+            AssinarMensagens();
+        }     
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            CancelarMensagens();
+        }
+
+        private void AssinarMensagens()
+        {
+            MessagingCenter.Subscribe<Usuario>(this, "MeusAgendamentos", (usuario) =>
+            {
+
+                this.Detail = new NavigationPage(new AgendamentosUsuarioView()); //troca a navegacao
+                this.IsPresented = false; // fecha o menu lateral
+            });
+
+            MessagingCenter.Subscribe<Usuario>(this, "NovoAgendamento", (usuario) =>
+            {
+
+                this.Detail = new NavigationPage(new ListagemView()); //troca a Navegação
+                this.IsPresented = false; // Fecha o menu lateral
+
+            });
+        }
+
+        private void CancelarMensagens()
+        {
             MessagingCenter.Unsubscribe<Usuario>(this, "MeusAgendamentos");
+            MessagingCenter.Unsubscribe<Usuario>(this, "NovoAgendamento");
         }
     }
 }

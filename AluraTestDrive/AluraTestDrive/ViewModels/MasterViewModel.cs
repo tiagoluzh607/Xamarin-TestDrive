@@ -98,6 +98,13 @@ namespace AluraTestDrive.ViewModels
             MessagingCenter.Send<Usuario>(usuario, "MeusAgendamentos"); //que implemta masterdetailview
         }
 
+        public ICommand NovoAgendamentoCommand { get; set; }
+        public void NovoAgendamento()
+        {
+            MessagingCenter.Send<Usuario>(usuario, "NovoAgendamento"); // quem implementa é MasterDetailView.cs
+        }
+
+
         //Messagens
 
         private void Messagens()
@@ -116,6 +123,7 @@ namespace AluraTestDrive.ViewModels
             EditarCommand = new Command(Editar);
             TirarFotoCommand = new Command(TirarFoto);
             MeusAgendamentosCommand = new Command(MeusAgendamentos);
+            NovoAgendamentoCommand = new Command(NovoAgendamento);
 
             Messagens();
         }

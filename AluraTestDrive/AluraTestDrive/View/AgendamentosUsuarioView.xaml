@@ -10,7 +10,7 @@
                     <ViewCell.View>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding DataFormatada}" FontSize="20" VerticalOptions="Center"></Label>
-                            <Label Text=" - "VerticalOptions="Center"></Label>
+                            <Label Text=" - " VerticalOptions="Center"></Label>
                             <Label Text="{Binding Veiculo.Nome}" FontAttributes="Bold" VerticalOptions="Center"></Label>
                         </StackLayout>
                     </ViewCell.View>
