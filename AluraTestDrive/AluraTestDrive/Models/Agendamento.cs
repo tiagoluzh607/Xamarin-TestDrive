@@ -20,6 +20,13 @@ namespace AluraTestDrive.Models
         }
         public TimeSpan HoraAgendamento { get; set; }
 
+        public string DataFormatada
+        {
+            get{
+                return DataAgendamento.Add(HoraAgendamento).ToString("dd/MM/yyyy HH:mm"); 
+            }
+        }
+
 
 
         public AgendamentoBD GetAgendamentoDB()
@@ -34,14 +41,23 @@ namespace AluraTestDrive.Models
         }
 
         public Agendamento(string nome, string fone, string email, string modelo, decimal preco)
+            :this()
         {
             this.Nome = nome;
             this.Fone = fone;
             this.Email = email;
+
+            this.Veiculo = new Veiculo();
             this.Veiculo.Nome = modelo;
             this.Veiculo.Preco = preco;
         }
 
+        public Agendamento(string nome, string fone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento)
+            : this(nome,fone,email,modelo,preco)
+        {
+            this.DataAgendamento = dataAgendamento;
+            this.HoraAgendamento = horaAgendamento;
+        }
 
 
     }
