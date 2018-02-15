@@ -1,7 +1,6 @@
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\bin\Debug\netstandard2.0\AluraTestDrive.deps.json
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\bin\Debug\netstandard2.0\AluraTestDrive.dll
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\bin\Debug\netstandard2.0\AluraTestDrive.pdb
-C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.csprojResolveAssemblyReference.cache
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.csproj.CoreCompileInputs.cache
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.App.xaml.g.cs
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.View.AgendamentoView.xaml.g.cs
@@ -14,3 +13,5 @@ C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.AssemblyInfo.cs
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.dll
 C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.pdb
+C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.View.AgendamentosUsuarioView.xaml.g.cs
+C:\Users\tiagoluz\source\repos\AluraTestDrive\AluraTestDrive\AluraTestDrive\obj\Debug\netstandard2.0\AluraTestDrive.csprojResolveAssemblyReference.cache

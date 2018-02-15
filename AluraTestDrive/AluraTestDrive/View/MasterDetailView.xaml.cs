@@ -23,5 +23,20 @@ namespace AluraTestDrive.View
             this.Master = new MasterView(usuario); // Pagina Escondida (Obs: sem o Title nesta pagina ela nao carrega)
             this.Detail = new NavigationPage(new ListagemView()); // Pagina Exibida 
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Usuario>(this, "MeusAgendamentos", (usuario) => {
+                this.Detail = new NavigationPage(new AgendamentosUsuarioView());
+                this.IsPresented = false;
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Usuario>(this, "MeusAgendamentos");
+        }
+    }
 }

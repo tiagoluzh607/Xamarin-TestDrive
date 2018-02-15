@@ -28,6 +28,19 @@ namespace AluraTestDrive.Models
             return agendamentoBD;
         }
 
+        public Agendamento()
+        {
+
+        }
+
+        public Agendamento(string nome, string fone, string email, string modelo, decimal preco)
+        {
+            this.Nome = nome;
+            this.Fone = fone;
+            this.Email = email;
+            this.Veiculo.Nome = modelo;
+            this.Veiculo.Preco = preco;
+        }
 
 
 

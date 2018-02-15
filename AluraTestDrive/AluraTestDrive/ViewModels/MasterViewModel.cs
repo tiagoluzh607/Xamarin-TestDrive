@@ -92,6 +92,12 @@ namespace AluraTestDrive.ViewModels
             DependencyService.Get<ICamera>().TirarFoto();
         }
 
+        public ICommand MeusAgendamentosCommand { get; set; }
+        public void MeusAgendamentos()
+        {
+            MessagingCenter.Send<Usuario>(usuario, "MeusAgendamentos"); //que implemta masterdetailview
+        }
+
         //Messagens
 
         private void Messagens()
@@ -109,6 +115,7 @@ namespace AluraTestDrive.ViewModels
             SalvarCommand = new Command(Salvar,SalvarCondicao);
             EditarCommand = new Command(Editar);
             TirarFotoCommand = new Command(TirarFoto);
+            MeusAgendamentosCommand = new Command(MeusAgendamentos);
 
             Messagens();
         }
