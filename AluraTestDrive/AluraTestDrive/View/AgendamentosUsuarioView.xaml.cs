@@ -1,4 +1,5 @@
-﻿using AluraTestDrive.Models;
+﻿using AluraTestDrive.Converters;
+using AluraTestDrive.Models;
 using AluraTestDrive.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace AluraTestDrive.View
 		public AgendamentosUsuarioView ()
 		{
 			InitializeComponent ();
-            this.BindingContext = new AgendamentosUsuarioViewModel();       
+            this.BindingContext = new AgendamentosUsuarioViewModel();
 		}
 	}
 }

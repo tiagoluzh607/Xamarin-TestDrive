@@ -3,6 +3,7 @@ using AluraTestDrive.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -29,7 +30,12 @@ namespace AluraTestDrive.ViewModels
             {
                 AgendamentoDAO dao = new AgendamentoDAO(conexao);
                 var listaBD = dao.Lista;
-                foreach(var itemDB in listaBD)
+
+                var query = listaBD
+                            .OrderBy(l => l.DataAgendamento)
+                            .ThenBy(l => l.HoraAgendamento);
+
+                foreach(var itemDB in query)
                 {
                     this.Lista.Add(itemDB);
                 }
